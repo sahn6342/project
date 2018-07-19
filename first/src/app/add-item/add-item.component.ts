@@ -18,26 +18,12 @@ export class AddItemComponent implements OnInit {
     window.alert("done");
   }
   addItem(temp){
-    window.alert(temp.category+temp.item);
-    this.http.post('http://localhost:6000/user/insert',{
+    this.http.post('http://localhost:6363/user/getdata',{
       category:temp.category,
       item:temp.item
     }).subscribe((res:any)=>{
-      console.log(res.msg)
+      console.log(res)
     })
-
-
-    // this.http.post('https://additem.herokuapp.com/user/login', {
-    //   email: temp.category,
-    //   password: temp.item
-    // }).subscribe((res: any)=>{
-    //   if(res.success){
-    //     window.alert(res.msg);
-    //   } else{
-    //     window.alert(res.msg);
-    //   }
-    // })
-
   }
   ngOnInit() {
   }
