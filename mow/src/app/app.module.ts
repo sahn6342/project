@@ -22,7 +22,11 @@ import { AppComponent } from './app.component';
   {
     path:"add",
     loadChildren:"./add/add.module#AddModule"
-  }])
+  },
+{
+  path:"signup",
+  loadChildren:"./signup/signup.module#SignupModule"
+}])
   ],
   providers: [],
   bootstrap: [AppComponent]

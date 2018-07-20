@@ -13,13 +13,15 @@ export class AddCategoryComponent implements OnInit {
       category:temp.category
     }).subscribe((res:any)=>{
       if(res.msg=="Item already insterted")
-      {let q='"'+res.msg+'" So please enter a new category'
+      {
+        let q='"'+res.msg+'" So please enter a new category'
         window.alert(q)
     }
     else{
       window.alert(res.msg)
     }
     })
+
   }
   ngOnInit() {
   }
