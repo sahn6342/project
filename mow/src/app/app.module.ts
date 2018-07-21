@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot([
       {
         path:"",
-        redirectTo:"fetchAll",
+        redirectTo:"login",
         pathMatch:"full"
       },
     {
@@ -26,6 +26,10 @@ import { AppComponent } from './app.component';
 {
   path:"signup",
   loadChildren:"./signup/signup.module#SignupModule"
+},
+{
+  path:"login",
+  loadChildren:"./login/login.module#LoginModule"
 }])
   ],
   providers: [],
