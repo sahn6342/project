@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4" *ngFor="let id of ids;let i=index">
+      <!-- <button class="btn btn-danger" type="button" (click)="getcat(id)" >{{names[i]}}</button> -->
+
+      <button class="btn btn-danger" type="button" (click)="showid(id)" >{{names[i]}}</button>
+    </div>
+  </div>
+</div>

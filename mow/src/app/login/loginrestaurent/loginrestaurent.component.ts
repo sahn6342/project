@@ -12,7 +12,7 @@ export class LoginrestaurentComponent implements OnInit {
       email:data.email,
       password:data.password
     }).subscribe((res:any)=>{
-      console.log(res.msg)
+      window.alert(res.msg)
     })
   }
   ngOnInit() {

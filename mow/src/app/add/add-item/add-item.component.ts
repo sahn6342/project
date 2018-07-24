@@ -20,11 +20,11 @@ export class AddItemComponent implements OnInit {
       category:temp.category,
       item:temp.item
     }).subscribe((res:any)=>{
-      console.log(res)
+      window.alert(res.msg)
     })
-    this.http.get("http://localhost:6363/user/alldata").subscribe((res:any)=>{
-      console.log(res)
-    })
+    // this.http.get("http://localhost:6363/user/alldata").subscribe((res:any)=>{
+    //   window.alert(res.msg)
+    // })
    }
   ngOnInit() {
 

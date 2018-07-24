@@ -21,10 +21,12 @@ export class SignuprestaurentComponent implements OnInit {
     pincode:data.pincode
     }).subscribe((res:any)=>{
       if(res.success){
+        window.alert(res.msg)
         console.log(res.msg)
         this.form.reset();
       }
       else{
+        window.alert(res.msg)
         console.log(res.msg)
       }
     })

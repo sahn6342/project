@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
         pathMatch:"full"
       },
     {
-      path:"fetchAll",
+      path:"fetch",
       loadChildren:"./fetch/fetch.module#FetchModule"
     },
   {

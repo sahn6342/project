@@ -14,7 +14,7 @@ export class SignupcustomerComponent implements OnInit {
       phone:data.phone,
       password:data.password
     }).subscribe((res:any)=>{
-      console.log(res.msg)
+      window.alert(res.msg)
     })
   }
   ngOnInit() {
