@@ -1,9 +1,26 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-4" *ngFor="let id of ids;let i=index">
-      <!-- <button class="btn btn-danger" type="button" (click)="getcat(id)" >{{names[i]}}</button> -->
-
-      <button class="btn btn-danger" type="button" (click)="showid(id)" >{{names[i]}}</button>
+<!-- if condition to chose what to show -->
+<span *ngIf="flag;then restaurents;else category"></span>
+<button type="button" (click)="revert()">revert</button>
+<!-- restaurent data template -->
+<ng-template #restaurents>
+  <div class="container">
+    <div class="row justify">
+      <div class="col-md-4 p-2" *ngFor="let id of ids;let i=index">
+        <button class="btn btn-danger" type="button" (click)="getcat(id)" >{{names[i]}}</button>
+  
+        <!-- <button class="btn btn-danger" type="button" (click)="showid(id)" >{{names[i]}}</button> -->
+      </div>
     </div>
   </div>
-</div>
+</ng-template>
+
+<!-- category template -->
+<ng-template #category>
+  <div class="container">
+    <div class="row justify">
+      <div class="col-md-4 p-2">
+        {{cat}}
+      </div>
+    </div>
+  </div>
+</ng-template>

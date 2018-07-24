@@ -6,8 +6,7 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./fetchrest.component.css']
 })
 export class FetchrestComponent implements OnInit {
-  names;
-  ids;
+  names;flag=true;ids;cat;tempcat;
   constructor(private http : HttpClient) {
     this.http.get("http://localhost:6363/user/getrest").subscribe((res:any)=>{
     this.names=res.name;
@@ -16,7 +15,9 @@ export class FetchrestComponent implements OnInit {
     })
     // setTimeout(()=>{console.log("time")},1)
    }
-   
+   revert(){
+     this.flag=!this.flag
+   }
    showid(temp){
      console.log(temp);
      console.log(this.ids)
@@ -25,8 +26,13 @@ export class FetchrestComponent implements OnInit {
      this.http.post("http://localhost:6363/user/getcat",{
        id:temp
      }).subscribe((res:any)=>{
+       this.tempcat=res.data;
+       this.cat=this.tempcat.category
        console.log(res)
      })
+     setTimeout(()=>{
+      this.flag=!this.flag
+    },10)
    }
   ngOnInit() {
   }
