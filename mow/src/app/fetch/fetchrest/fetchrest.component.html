@@ -1,9 +1,10 @@
-<!-- if condition to chose what to show -->
-<span *ngIf="flag;then restaurents;else category"></span>
+<button (click)="switchcondition = 'category'" >Restaurants</button>
+<!-- for old, see desktop -->
+<input type="text" [(ngModel)]="switchcondition" >
+<span [ngSwitch]="switchcondition">
 <button type="button" (click)="revert()">revert</button>
 <!-- restaurent data template -->
-<ng-template #restaurents>
-  <div class="container">
+  <div class="container" *ngSwitchDefault >
     <div class="row justify">
       <div class="col-md-4 p-2" *ngFor="let id of ids;let i=index">
         <button class="btn btn-danger" type="button" (click)="getcat(id)" >{{names[i]}}</button>
@@ -12,15 +13,25 @@
       </div>
     </div>
   </div>
-</ng-template>
 
 <!-- category template -->
-<ng-template #category>
-  <div class="container">
+  <div class="container" *ngSwitchCase="'category'">
     <div class="row justify">
-      <div class="col-md-4 p-2">
-        {{cat}}
-      </div>
+        <div class="col-md-4 p-2" *ngFor="let cat of cats;let i=index">
+          <button class="btn btn-danger" type="button" (click)="getitem(cat._id)" >{{cat.catname}}</button>
+          <!-- <button class="btn btn-danger" type="button" (click)="showid(cat._id)" >{{cat.catname}}</button> -->
+        </div>
     </div>
   </div>
-</ng-template>
+
+  <!-- item container -->
+  <div class="container" *ngSwitchCase="'item'" >
+      <div class="row justify">
+          {{items.catname}}
+            <div class="col-md-4 p-2" *ngFor="let item of items.item;let i=index">
+              <img src="{{items.image[i]}}" height="50%" width="80%" alt="shaipanner"><br>
+              {{items.item[i]}}<br>₹ {{items.price[i]}}<br>Varriant: {{items.varriant[i]}}
+            </div>
+        </div>
+  </div>
+</span>
