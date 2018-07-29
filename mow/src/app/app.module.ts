@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +13,7 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot([
       {
         path:"",
-        redirectTo:"login",
+        redirectTo:"fetch",
         pathMatch:"full"
       },
     {
@@ -24,12 +25,12 @@ import { AppComponent } from './app.component';
     loadChildren:"./add/add.module#AddModule"
   },
 {
-  path:"signup",
-  loadChildren:"./signup/signup.module#SignupModule"
+  path:"restaurant",
+  loadChildren:"./restaurant/restaurant.module#RestaurantModule"
 },
 {
-  path:"login",
-  loadChildren:"./login/login.module#LoginModule"
+  path:"customer",
+  loadChildren:"./customer/customer.module#CustomerModule"
 }])
   ],
   providers: [],

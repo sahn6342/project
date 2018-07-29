@@ -6,8 +6,10 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./fetchrest.component.css']
 })
 export class FetchrestComponent implements OnInit {
-  names;ids;cats;tempcat;restid;switchcondition;items;cart=true;switchcondition1;itemnameArray;priceArray
+  names;ids;cats;tempcat;restid;switchcondition;items;totalPrice=0;
+  cart=false;switchcondition1;itemnameArray=[];priceArray=[]
   constructor(private http : HttpClient) {
+    sessionStorage.clear();
     this.http.get("http://localhost:6363/user/getrest").subscribe((res:any)=>{
     this.names=res.name;
     this.ids=res.id;
@@ -46,29 +48,26 @@ export class FetchrestComponent implements OnInit {
       sessionStorage.setItem("catId",temp_id)
       setTimeout(()=>{
         this.switchcondition="item"
-        console.log("****",this.items,"****")
+        // console.log("****",this.items,"****")
       },1)
 
     })
-   }
+   }  
    //add to cart function
    addtocart(itemname,price){
-     console.log(sessionStorage.getItem("restId"))
-     console.log(sessionStorage.getItem("catId"))
-      sessionStorage.setItem("try",this.switchcondition1)
-     if(!this.cart){
-     this.itemnameArray=JSON.parse(sessionStorage.getItem("itemnameArray")),this.priceArray=JSON.parse(sessionStorage.getItem("this.priceArray"))
-     this.itemnameArray.push(itemname),this.priceArray.push(price)
-     sessionStorage.setItem("itemnameArray",JSON.stringify(this.itemnameArray))
-     sessionStorage.setItem("priceArray",JSON.stringify(this.priceArray))
-    }
-     else{
-      sessionStorage.setItem("itemnameArray",JSON.stringify(itemname))
-      sessionStorage.setItem("priceArray",JSON.stringify(price))
-      this.itemnameArray.push(itemname),this.priceArray.push(price)
+    this.itemnameArray.push(itemname);
+      this.priceArray.push(price);
+        this.totalPrice=this.totalPrice+price
+      console.log("itemarray",this.itemnameArray);
+      console.log("price array",this.priceArray)
       this.cart=true;
-     }
-   }
+    }
+    clearCart(){
+      this.cart=false;
+      this.itemnameArray=[];
+      this.priceArray=[];
+      this.totalPrice=0;
+    }
   ngOnInit() {
   }
 
