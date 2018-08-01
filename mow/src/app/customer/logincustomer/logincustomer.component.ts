@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-
+import{ Router,ActivatedRoute} from "@angular/router";
 @Component({
   templateUrl: './logincustomer.component.html',
   styleUrls: ['./logincustomer.component.css']
@@ -10,8 +10,22 @@ export class LogincustomerComponent implements OnInit {
   num : String = "";
     flag: Boolean=false;
 
+    ram = ""; 
+  constructor(private http:HttpClient, 
+              private router: Router,
+              private activatedroute:ActivatedRoute
+  ) {
+    this.ram=localStorage.getItem('token')
+    if(!this.ram || this.ram=="")
+    {
 
-  constructor(private http:HttpClient) { }
+    }
+    else{ 
+      this.router.navigate(['/dashboard/dashboard'])
+
+    }
+
+  }
 
   
   
@@ -32,10 +46,25 @@ export class LogincustomerComponent implements OnInit {
       else{
         this.num=res.msg;
         this.flag=false
+        localStorage.setItem('token', res.token)
+        this.router.navigate(['/dashboard/dashboard'])
+
+
       }
+
+      
+
     })
   
   }
+
+
+    rembo() {
+      this.router.navigate(['../dashboard/dashboard'],{relativeTo: this.activatedroute})
+      console.log("rembo triggered")
+    }
+
+
   ngOnInit() {
   }
 

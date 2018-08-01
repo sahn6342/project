@@ -8,7 +8,7 @@
         <div class="form-group">
           <input type="email" placeholder="Enter email address" name="email" #email="ngModel" ngModel class="form-control" required>
         </div>
-        <div class="from-group">
+        <div class="form-group">
           <input type="text" name="rest_name" #rest_name="ngModel" ngModel placeholder="Enter Restaurent Name" class="form-control" required>
         </div>
         <div class="form-group">
@@ -31,6 +31,17 @@
         </div>
         <div class="form-group">
           <input type="number" placeholder="Enter pincode" maxlength="6" minlength="6" #pincode="ngModel" ngModel name="pincode" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <input type="number" name="opningHour" #opningHour="ngModel" ngModel required class="custom-form-control" placeholder="Enter restaurant opning hour" >
+          <input type="number" name="opningMinute" #opningMinute="ngModel" ngModel required class="custom-form-control" placeholder="Enter restaurant opning minute" >
+        </div>
+        <div class="form-group">
+          <input type="number" name="closingHour" #opningHour="ngModel" ngModel required class="custom-form-control" placeholder="Enter restarant closing hour" >
+          <input type="number" name="closingMinute" #opningMinute="ngModel" ngModel required class="custom-form-control" placeholder="Enter restaurant closing minute" >
+        </div>
+        <div class="form-group">
+          <input type="text" name="website" #website="ngModel" ngModel  class="form-control" placeholder="Enter restaurant website" >
         </div>
         <div class="form-group text-center">
           <button type="submit" class="btn btn-success">Sign Up</button>

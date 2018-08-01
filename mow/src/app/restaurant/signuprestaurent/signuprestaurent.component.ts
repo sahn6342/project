@@ -18,7 +18,12 @@ export class SignuprestaurentComponent implements OnInit {
     lane:data.lane,
     landmark:data.landmark,
     city:data.landmark,
-    pincode:data.pincode
+    pincode:data.pincode,
+    website:data.website,
+    openhour:data.openHour,
+    openminute:data.openMinute,
+    closehour:data.closeHour,
+    closeminute:data.closeMinute
     }).subscribe((res:any)=>{
       if(res.success){
         window.alert(res.msg)
@@ -27,9 +32,10 @@ export class SignuprestaurentComponent implements OnInit {
       }
       else{
         window.alert(res.msg)
-        console.log(res.msg)
+        console.log(res.err)
       }
     })
+    console.log(data)
   }
   ngOnInit() {
   }

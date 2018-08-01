@@ -3,10 +3,11 @@ import { HttpClient } from "@angular/common/http";
 @Component({
   selector: 'app-fetchrest',
   templateUrl: './fetchrest.component.html',
-  styleUrls: ['./fetchrest.component.css']
+  styleUrls: ['../../../assets/css/bootstrap.min.css','./fetchrest.component.css','../../../assets/css/themify-icons.css','../../../assets/css/swiper.min.css','../../../assets/css/style.css','../../../assets/css/simple-line-icons.css','../../../assets/css/set2.css','../../../assets/css/magnific-popup.css','../../../assets/css/font-awesome.min.css']
+
 })
 export class FetchrestComponent implements OnInit {
-  names;ids;cats;tempcat;restid;switchcondition;items;totalPrice=0;
+  names;ids;cats;tempcat;restid;switchcondition;items;totalPrice=0;username;
   cart=false;switchcondition1;itemnameArray=[];priceArray=[]
   constructor(private http : HttpClient) {
     sessionStorage.clear();
@@ -16,7 +17,29 @@ export class FetchrestComponent implements OnInit {
     console.log(res.name)
     })
     // setTimeout(()=>{console.log("time")},1)
-   }
+  
+    
+    this.http.post("http://localhost:6363/user/username",{
+      token: localStorage.getItem('token')
+    }).subscribe((res:any)=>{
+          if(res.msg == "error")
+          {
+            console.log("error")
+            this.username='';
+          }
+          else{
+       this.username= res.msg
+
+       console.log(this.username) 
+
+          }
+      })
+   
+
+
+
+
+  }
    showid(temp){
      console.log(temp);
     //  console.log(this.ids)
@@ -34,6 +57,10 @@ export class FetchrestComponent implements OnInit {
      setTimeout(()=>{
       this.switchcondition="category"
     },1)
+   }
+   // to save restaurent id for fetch category in next page
+   saveRestId(temp){
+    sessionStorage.setItem("resId",temp)
    }
   //  To get items by id of restaurant
    getitem(temp_id){

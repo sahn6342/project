@@ -20,6 +20,10 @@ import { FormsModule } from "@angular/forms";
         component:FetchrestComponent
       },
       {
+        path:"fetchcat",
+        component:FetchcatComponent
+      },
+      {
       path:"fetchall",
       component:FetchAllComponent
     }])

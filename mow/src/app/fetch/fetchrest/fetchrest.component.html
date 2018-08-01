@@ -1,105 +1,105 @@
-<button (click)="switchcondition = 'category'">Restaurants</button>
-<!-- for old, see desktop -->
-<input type="text" [(ngModel)]="switchcondition">
-<input type="text" [(ngModel)]="switchcondition1">
-<span *ngIf="cart;then withcart;else withoutcart"></span>
-<ng-template #withcart>
-  <div class="row">
-    <div class="col-md-9 bg-primary">
-      <span [ngSwitch]="switchcondition">
-        <button type="button" (click)="revert()">revert</button>
-        <!-- restaurent data template -->
-        <div class="container" *ngSwitchDefault>
-          <div class="row pt-2">
-            <h3>Restaurants</h3>
-            <br>
-            <div class="col-md-3 p-1" *ngFor="let id of ids;let i=index">
-              <button class="btn btn-danger" type="button" (click)="getcat(id)">{{names[i]}}</button>
 
-              <!-- <button class="btn btn-danger" type="button" (click)="showid(id)" >{{names[i]}}</button> -->
-            </div>
+    <!--============================= HEADER =============================-->
+    <div class="dark-bg sticky-top">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                      <a class="navbar-brand" href="http://localhost:5678/dashboard/dashboard">MealsOnWheels</a>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-menu"></span>
+          </button>
+                      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                          <ul class="navbar-nav">
+                                  <div *ngIf="username=='';else kk">
+                                          <button routerLinkActive="btn-outline-primary" class="btn mx-1" routerLink="login/customer">login</button>  
+                                        </div>
+                           <ng-template #kk>
+                          <button type="button" class="btn btn-danger" (click)="logout()">logout</button>
+                      </ng-template>
+                      </ul>
+                      </div>
+                  </nav>
+              </div>
           </div>
-        </div>
-
-        <!-- category template -->
-        <div class="container" *ngSwitchCase="'category'">
-          <div class="row justify">
-            <div class="col-md-4 p-2" *ngFor="let cat of cats;let i=index">
-              <button class="btn btn-danger" type="button" (click)="getitem(cat._id)">{{cat.catname}}</button>
-              <!-- <button class="btn btn-danger" type="button" (click)="showid(cat._id)" >{{cat.catname}}</button> -->
-            </div>
-          </div>
-        </div>
-
-        <!-- item container -->
-        <div class="container" *ngSwitchCase="'item'">
-          <div class="row justify">
-            {{items.catname}}
-            <div class="col-md-4 p-2" (click)="addtocart(items.item[i],items.price[i])" *ngFor="let item of items.item;let i=index">
-              <img src="{{items.image[i]}}" height="50%" width="80%" alt="{{items.item[i]}}">
-              <br>
-              <!-- {{items.item[i]}}<br>₹ {{items.price[i]}}<br>Varriant: {{items.varriant[i]}} -->
-            </div>
-          </div>
-        </div>
-      </span>
-    </div>
-    <div class="col-md-3" *ngIf="cart">
-      <div class="container">
-        <div class="border">
-          <b>Items</b>
-          <span *ngFor="let item of itemnameArray;let i = index">
-            {{itemnameArray[i]}},
-          </span>
-          <br>
-          <b>Total:</b>
-          <span >
-              ₹ {{totalPrice}}
-          </span>
-          <br>
-          <button class="btn btn-danger" (click)="clearCart()">Clear Cart</button>
-        </div>
       </div>
-    </div>
   </div>
-</ng-template>
+  
+  <div *ngIf="username=='';else dd">
+    
+  </div>
+      <!-- <ng-template #dd>
+          <div>{{username}}</div>
+      </ng-template> -->
 
-<ng-template #withoutcart>
-  <span [ngSwitch]="switchcondition">
-    <button type="button" (click)="revert()">revert</button>
-    <!-- restaurent data template -->
-    <div class="container" *ngSwitchDefault>
-      <div class="row pt-2">
-        <h3>Restaurants</h3>
-        <br>
-        <div class="col-md-3 p-1" *ngFor="let id of ids;let i=index">
-          <button class="btn btn-danger" type="button" (click)="getcat(id)">{{names[i]}}</button>
 
-          <!-- <button class="btn btn-danger" type="button" (click)="showid(id)" >{{names[i]}}</button> -->
-        </div>
-      </div>
-    </div>
+  <!--//END HEADER -->
+  <!--============================= DETAIL =============================-->
+  
+  <section>
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12 responsive-wrap">
+                      
+                      
+                      <div class="row light-bg detail-options-wrap">
+                        <div *ngFor="let name of names; let i = index" class="col-sm-4 col-lg-12 col-xl-4 featured-responsive">
+                              <div class="featured-place-wrap">
+                                  <a (click)="saveRestId(id[i])" href="/fetch/fetchcat">
+                                      <img src="../../../assets/../../../assets/images/featured1.jpg" class="img-fluid" alt="#">
+                                      <span class="featured-rating-orange ">6.5</span>
+                                      <div class="featured-title-box">
+                                          <h6>{{name}}</h6>
+                                          <p>Restaurant </p> <span>• </span>
+                                          <p>3 Reviews</p> <span> • </span>
+                                          <p><span>$$$</span>$$</p>
+                                          <ul>
+                                              <li><span class="icon-location-pin"></span>
+                                                  <p>1301 Avenue, Brooklyn, NY 11230</p>
+                                              </li>
+                                              <li><span class="icon-screen-smartphone"></span>
+                                                  <p>+44 20 7336 8898</p>
+                                              </li>
+                                              <li><span class="icon-link"></span>
+                                                  <p>https://burgerandlobster.com</p>
+                                              </li>
+  
+                                          </ul>
+                                          <div class="bottom-icons">
+                                              <div class="closed-now">CLOSED NOW</div>
+                                              <span class="ti-heart"></span>
+                                              <span class="ti-bookmark"></span>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+      </section>
 
-    <!-- category template -->
-    <div class="container" *ngSwitchCase="'category'">
-      <div class="row justify">
-        <div class="col-md-4 p-2" *ngFor="let cat of cats;let i=index">
-          <button class="btn btn-danger" type="button" (click)="getitem(cat._id)">{{cat.catname}}</button>
-          <!-- <button class="btn btn-danger" type="button" (click)="showid(cat._id)" >{{cat.catname}}</button> -->
-        </div>
-      </div>
-    </div>
 
-    <!-- item container -->
-    <div class="container" *ngSwitchCase="'item'">
-      <div class="row justify">
-        {{items.catname}}
-        <div class="col-md-4 p-2" (click)="addtocart(items.item[i],items.price[i])" *ngFor="let item of items.item;let i=index">
-          <img src="{{items.image[i]}}" height="50%" width="80%" alt="{{items.item[i]}}">
-          <br>
-          <!-- {{items.item[i]}}<br>₹ {{items.price[i]}}<br>Varriant: {{items.varriant[i]}} -->
-        </div>
-      </div>
-    </div>
-  </span>
-</ng-template>
+
+
+
+
+
+  <!--//END DETAIL -->
+  <!--============================= FOOTER =============================-->
+  
+  <!--//END FOOTER -->
+
+
+
+
+  <!-- jQuery, Bootstrap JS. -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+
+  

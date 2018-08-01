@@ -5,6 +5,7 @@ import { LogincustomerComponent } from './logincustomer/logincustomer.component'
 import { FormsModule } from "@angular/forms";
 import { SignupcustomerComponent } from './signupcustomer/signupcustomer.component';
 import { HttpClientModule } from "@angular/common/http";
+import { VerifyComponent } from './verify/verify.component';
 @NgModule({
   imports: [
     CommonModule,FormsModule,HttpClientModule,
@@ -21,8 +22,16 @@ import { HttpClientModule } from "@angular/common/http";
   {
     path:"signup",
     component:SignupcustomerComponent
-  }])
+  },
+  {
+    path:"verify",
+    component:VerifyComponent
+  },
+{
+  path:"dashboard",
+  loadChildren:"../dashboard/dashboard.module#DashboardModule"
+}])
   ],
-  declarations: [LogincustomerComponent,SignupcustomerComponent]
+  declarations: [LogincustomerComponent,SignupcustomerComponent,VerifyComponent]
 })
 export class CustomerModule { }
