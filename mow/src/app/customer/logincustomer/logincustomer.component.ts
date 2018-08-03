@@ -21,7 +21,7 @@ export class LogincustomerComponent implements OnInit {
 
     }
     else{ 
-      this.router.navigate(['/dashboard/dashboard'])
+      this.router.navigate(['/fetch/fetchrest'])
 
     }
 
@@ -47,7 +47,7 @@ export class LogincustomerComponent implements OnInit {
         this.num=res.msg;
         this.flag=false
         localStorage.setItem('token', res.token)
-        this.router.navigate(['/dashboard/dashboard'])
+        this.router.navigate(['/fetch/fetchrest'])
 
 
       }

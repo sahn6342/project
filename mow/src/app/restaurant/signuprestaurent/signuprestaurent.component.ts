@@ -5,9 +5,14 @@ import{HttpClient}from "@angular/common/http"
   styleUrls: ['./signuprestaurent.component.css']
 })
 export class SignuprestaurentComponent implements OnInit {
+  // var opningTime
+  openingTime;closingTime;
   @ViewChild('restaurentsignupForm') form;
   constructor(private http:HttpClient) { }
   signup(data){
+    this.openingTime=(data.openingHour*100)+data.openingMinute
+    this.closingTime=(data.closingHour*100)+data.closingMinute
+    console.log(this.openingTime,"-----",this.closingTime)
     this.http.post("http://localhost:6363/user/restsign",{
     name:data.name,
     email:data.email,
@@ -20,10 +25,8 @@ export class SignuprestaurentComponent implements OnInit {
     city:data.landmark,
     pincode:data.pincode,
     website:data.website,
-    openhour:data.openHour,
-    openminute:data.openMinute,
-    closehour:data.closeHour,
-    closeminute:data.closeMinute
+    openingTime:this.openingTime,
+    closingTime:this.closingTime
     }).subscribe((res:any)=>{
       if(res.success){
         window.alert(res.msg)
