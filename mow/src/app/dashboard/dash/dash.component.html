@@ -12,7 +12,7 @@
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                             <ul class="navbar-nav">
                                     <div *ngIf="username=='';else kk">
-                                            <button routerLinkActive="btn-outline-primary" class="btn mx-1" routerLink="login/customer">login</button>  
+                                            <button routerLinkActive="btn-outline-primary" class="btn mx-1" routerLink="customer/login">login</button>  
                                           </div>
                              <ng-template #kk>
                             <button type="button" class="btn btn-danger" (click)="logout()">logout</button>
