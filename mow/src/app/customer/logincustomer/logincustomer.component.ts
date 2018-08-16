@@ -16,7 +16,7 @@ export class LogincustomerComponent implements OnInit {
               private activatedroute:ActivatedRoute
   ) {
     this.ram=sessionStorage.getItem('token')
-    if(!this.ram || this.ram=="")
+    if(!this.ram || this.ram==""||this.ram==undefined)
     {
 
     }
@@ -35,7 +35,7 @@ export class LogincustomerComponent implements OnInit {
       email:data.email,
       password:data.password
     }).subscribe((res:any)=>{
-      
+      console.log(res.msg)
       
       if(res.msg=="please")
       { 
@@ -47,7 +47,7 @@ export class LogincustomerComponent implements OnInit {
         this.num=res.msg;
         this.flag=false
         sessionStorage.setItem('token',res.token)
-        
+        // window.alert(res.token)
         this.router.navigate(['/fetch/fetchrest'])
 
 

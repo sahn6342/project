@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 
 })
 export class FetchrestComponent implements OnInit {
-  names; ids; cats; tempcat; restid; switchcondition; items; totalPrice = 0; username;token;
+  names; ids; cats; tempcat; restid; switchcondition; items; totalPrice = 0; username; token;
   status; website; phone; address; city = []; lane = []; landmark = []; pincode = []; street = [];
   cart = false; switchcondition1; itemnameArray = []; priceArray = []
   constructor(private http: HttpClient, private router: Router) {
-    this.token=sessionStorage.getItem("token")
+    this.token = sessionStorage.getItem("token")
     // console.log(this.token)
     this.http.get("http://localhost:6363/user/getrest").subscribe((res: any) => {
       // console.log(res.id,'-----')
@@ -30,20 +30,26 @@ export class FetchrestComponent implements OnInit {
         this.street.push(this.address[i].street)
       }
     })
-    this.http.post("http://localhost:6363/user/username", {
-      token: sessionStorage.getItem('token')
-    }).subscribe((res: any) => {
-      if (res.msg == "error") {
-        console.log("error--",res.error)
-        this.username = '';
-      }
-      else {
-        this.username = res.msg
+    if (!this.token || this.token == "undefined" || this.token == "") {
+      console.log("token not found")
+    }
+    else {
+      this.http.post("http://localhost:6363/user/username", {
+        token: sessionStorage.getItem('token')
+        // token: "kgxBvhjy1u5m0ddYvjhYg9SLpl0dbssZ"
+      }).subscribe((res: any) => {
+        if (res.msg == "error") {
+          console.log("error--", res.error)
+          this.username = '';
+        }
+        else {
+          this.username = res.msg
 
-        console.log(this.username)
+          console.log(this.username)
 
-      }
-    })
+        }
+      })
+    }
 
 
 
