@@ -11,7 +11,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                         <ul class="navbar-nav">
-                            <div *ngIf="username=='';else kk">
+                            <div *ngIf="token==''||token==null||token=='undefined';else kk">
                                 <button routerLinkActive="btn-outline-primary" class="btn mx-1" routerLink="/customer/login">login</button>
                             </div>
                             <ng-template #kk>
@@ -23,15 +23,7 @@
             </div>
         </div>
     </div>
-</div>
-
-<div *ngIf="username=='';else dd">
-
-</div>
-<!-- <ng-template #dd>
-          <div>{{username}}</div>
-      </ng-template> -->
-
+</div>    
 
 <!--//END HEADER -->
 <!--============================= DETAIL =============================-->
@@ -45,7 +37,7 @@
                 <div class="row light-bg detail-options-wrap">
                     <div *ngFor="let name of names; let i = index" class="col-sm-4 col-lg-12 col-xl-4 featured-responsive">
                         <div class="featured-place-wrap">
-                            <a (click)="saveRestId(id[i])" href="/fetch/fetchcat">
+                            <div (click)="saveRestId(ids[i])">
                                 <img src="../../../assets/../../../assets/images/featured1.jpg" class="img-fluid" alt="#">
                                 <!-- <span class="featured-rating-orange ">6.5</span> -->
                                 <div class="featured-title-box">
@@ -88,7 +80,7 @@
                                         </div>
                                     </ng-template>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

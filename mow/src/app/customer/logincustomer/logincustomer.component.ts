@@ -15,7 +15,7 @@ export class LogincustomerComponent implements OnInit {
               private router: Router,
               private activatedroute:ActivatedRoute
   ) {
-    this.ram=localStorage.getItem('token')
+    this.ram=sessionStorage.getItem('token')
     if(!this.ram || this.ram=="")
     {
 
@@ -46,7 +46,8 @@ export class LogincustomerComponent implements OnInit {
       else{
         this.num=res.msg;
         this.flag=false
-        localStorage.setItem('token', res.token)
+        sessionStorage.setItem('token',res.token)
+        
         this.router.navigate(['/fetch/fetchrest'])
 
 

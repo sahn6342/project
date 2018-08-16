@@ -16,7 +16,7 @@ export class DashComponent implements OnInit {
   
   constructor(private http:HttpClient,
   private router:Router) { 
-    //  if(!localStorage.getItem('token') || localStorage.getItem('token')==null){
+    //  if(!sessionStorage.getItem('token') || sessionStorage.getItem('token')==null){
     //     console.log("works");
     //  }
     //  else{
@@ -31,11 +31,11 @@ export class DashComponent implements OnInit {
 
 
     this.http.post("http://localhost:6363/user/username",{
-      token: localStorage.getItem('token')
+      token: sessionStorage.getItem('token')
     }).subscribe((res:any)=>{
           if(res.msg == "error")
           {
-            console.log("error")
+            console.log("error--",res.error)
             this.username='';
           }
           else{
@@ -52,7 +52,7 @@ export class DashComponent implements OnInit {
   
 
   logout() {
-    localStorage.removeItem("token")
+    sessionStorage.removeItem("token")
     this.router.navigate(['login/customer'])
   }
   
