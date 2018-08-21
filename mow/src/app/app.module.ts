@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,9 @@ import { AppComponent } from './app.component';
     {
       path:"fetch",
       loadChildren:"./fetch/fetch.module#FetchModule"
+    },{
+      path:"test",
+      component:TestComponent
     },
   {
     path:"add",

@@ -19,7 +19,7 @@ export class FetchrestComponent implements OnInit {
       this.names = res.name;
       this.ids = res.id;
       this.status = res.status;
-      this.address = res.address;
+      this.address = res.address; 
       this.phone = res.phone;
       this.website = res.website;
       for (let i = 0; i < this.address.length; i++) {
@@ -64,20 +64,6 @@ export class FetchrestComponent implements OnInit {
 
   // showid(temp) {
   //   console.log(temp);
-  // }
-  // getcat(temp) {
-  //   this.http.post("http://localhost:6363/user/getcat", {
-  //     id: temp
-  //   }).subscribe((res: any) => {
-  //     this.tempcat = res.data;
-  //     this.cats = this.tempcat.category
-  //     console.log("restid---", temp, "---")
-  //   })
-  //   sessionStorage.setItem("restId", temp)
-  //   this.restid = temp
-  //   setTimeout(() => {
-  //     this.switchcondition = "category"
-  //   }, 1)
   // }
   // // to save restaurent id for fetch category in next page
   saveRestId(temp) {

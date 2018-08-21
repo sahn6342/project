@@ -1,3 +1,8 @@
-<p>
-  fetchcat works!
-</p>
+<div class="container">
+  <div class="row justify">
+      <div class="col-md-4 p-2" *ngFor="let cat of cats;let i=index">
+        <button class="btn btn-danger" type="button" (click)="getitem(cat._id)" >{{cat.catname}}</button>
+        <!-- <button class="btn btn-danger" type="button" (click)="showid(cat._id)" >{{cat.catname}}</button> -->
+      </div>
+  </div>
+</div>

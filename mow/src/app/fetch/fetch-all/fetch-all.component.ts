@@ -12,7 +12,7 @@ export class FetchAllComponent implements OnInit {
     })
     setTimeout(()=>{
       console.log(this.obj)
-      this.flag=1
+      this.flag=true
     },1 )
    }
 
