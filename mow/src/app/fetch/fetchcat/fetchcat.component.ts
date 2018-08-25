@@ -14,9 +14,9 @@ export class FetchcatComponent implements OnInit {
       id: this.temp
     }).subscribe((res: any) => {
       this.tempcat = res.data;
-      this.cats = this.tempcat.category
+      this.cats = this.tempcat.category;
       // console.log("restid---", this.temp, "---")
-      // console.log("cats---", this.cats, "---")
+      console.log("cats---", this.cats, "---")
       // console.log('tempcat',this.tempcat)
     })
     sessionStorage.setItem("catId", this.temp)
