@@ -7,7 +7,7 @@ import { Session } from 'protractor';
   styleUrls: ['./fetchcat.component.css']
 })
 export class FetchcatComponent implements OnInit {
-  temp;tempcat;cats=[];
+  temp;tempcat;cats=[];flag=true;
   constructor(private http:HttpClient) {
     this.temp=sessionStorage.getItem('resId')
     this.http.post("http://localhost:6363/user/getcat", {
